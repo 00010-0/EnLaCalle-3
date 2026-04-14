@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Historia Antonio - Mejorada</title>
+
+<!-- Tipografía más profesional y “cuqui” -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#F6F2EC;
+  --dark:#1E1C1A;
+  --accent:#D28C45;
+  --soft:#E9DED2;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Inter', sans-serif;
+  background:var(--bg);
+  overflow:hidden;
+}
+
+h1,h2{
+  font-family:'Playfair Display', serif;
+}
+
+/* CONTENEDOR HORIZONTAL */
+.wrapper{
+  display:flex;
+  height:100vh;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  perspective:1800px;
+}
+
+.section{
+  min-width:100vw;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  scroll-snap-align:center;
+  position:relative;
+}
+
+.card{
+  width:70%;
+  max-width:800px;
+  padding:60px;
+  background:white;
+  border-radius:30px;
+  box-shadow:0 40px 80px rgba(0,0,0,0.2);
+  transform:rotateY(-20deg) scale(0.9);
+  transition:all 1s cubic-bezier(.2,.8,.2,1);
+}
+
+.section.active .card{
+  transform:rotateY(0deg) scale(1);
+}
+
+h2{
+  font-size:2.5rem;
+  margin-bottom:20px;
+}
+
+p{
+  font-size:1.1rem;
+  line-height:1.7;
+  color:#555;
+}
+
+/* FONDOS SUAVES */
+.section:nth-child(1){background:linear-gradient(120deg,#1E1C1A,#2C2824);color:white}
+.section:nth-child(2){background:#F6F2EC}
+.section:nth-child(3){background:#EFE7DC}
+.section:nth-child(4){background:#F6F2EC}
+.section:nth-child(5){background:#1E1C1A;color:white}
+
+/* TEXTO HERO */
+.hero h1{
+  font-size:4rem;
+}
+
+.hero span{
+  color:var(--accent);
+}
+
+/* BOTÓN */
+.btn{
+  margin-top:30px;
+  padding:12px 25px;
+  border-radius:30px;
+  border:none;
+  background:var(--accent);
+  color:white;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.btn:hover{
+  transform:scale(1.05);
+}
+
+/* EFECTO FLOAT */
+.card:hover{
+  transform:rotateY(0deg) scale(1.03) translateY(-10px);
+}
+
+/* INDICADOR */
+.indicator{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:10px;
+}
+
+.dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#bbb;
+}
+
+.dot.active{background:var(--accent)}
+
+</style>
+</head>
+
+<body>
+
+<div class="wrapper" id="wrapper">
+
+<!-- 1 -->
+<section class="section hero">
+  <div class="card">
+    <h1>Hola, soy <span>Antonio</span></h1>
+    <p>Esta es mi historia real. Gracias por leerla.</p>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="section">
+  <div class="card">
+    <h2>Mi historia</h2>
+    <p>Todo cambió tras la muerte de mi madre. Perdí estabilidad familiar y terminé fuera de casa.</p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="section">
+  <div class="card">
+    <h2>Situación actual</h2>
+    <p>No tengo un lugar fijo donde dormir. Estoy intentando salir adelante.</p>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="section">
+  <div class="card">
+    <h2>Cómo ayudar</h2>
+    <p>Cualquier ayuda puede marcar una diferencia enorme en este momento.</p>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="section">
+  <div class="card">
+    <h2>Donación</h2>
+    <p>IBAN: ES00 0000 0000 0000</p>
+    <button class="btn">Copiar</button>
+  </div>
+</section>
+
+</div>
+
+<div class="indicator" id="indicator"></div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const wrapper = document.getElementById('wrapper');
+const indicator = document.getElementById('indicator');
+
+sections.forEach((_,i)=>{
+  const dot=document.createElement('div');
+  dot.classList.add('dot');
+  if(i===0) dot.classList.add('active');
+  indicator.appendChild(dot);
+});
+
+const dots=document.querySelectorAll('.dot');
+
+wrapper.addEventListener('scroll',()=>{
+  let index=Math.round(wrapper.scrollLeft / window.innerWidth);
+
+  sections.forEach(s=>s.classList.remove('active'));
+  sections[index].classList.add('active');
+
+  dots.forEach(d=>d.classList.remove('active'));
+  dots[index].classList.add('active');
+});
+</script>
+
+</body>
+</html>
