@@ -3,132 +3,180 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Historia Antonio - Mejorada</title>
+<title>Historia de Antonio</title>
 
-<!-- Tipografía más profesional y “cuqui” -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg:#F6F2EC;
-  --dark:#1E1C1A;
-  --accent:#D28C45;
-  --soft:#E9DED2;
-}
+  :root {
+    --text-dark: #433831;
+    --text-light: #8A7E77;
+    --accent: #E2856E; /* Un tono salmón/terracota suave */
+  }
 
-*{margin:0;padding:0;box-sizing:border-box}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body{
-  font-family:'Inter', sans-serif;
-  background:var(--bg);
-  overflow:hidden;
-}
+  body {
+    font-family: 'Quicksand', sans-serif;
+    color: var(--text-dark);
+    overflow: hidden;
+    background-color: #FDFBF7;
+  }
 
-h1,h2{
-  font-family:'Playfair Display', serif;
-}
+  h1, h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--text-dark);
+  }
 
-/* CONTENEDOR HORIZONTAL */
-.wrapper{
-  display:flex;
-  height:100vh;
-  overflow-x:auto;
-  scroll-snap-type:x mandatory;
-  perspective:1800px;
-}
+  /* CONTENEDOR HORIZONTAL */
+  .wrapper {
+    display: flex;
+    height: 100vh;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    /* Ocultar barra de scroll para un look más limpio */
+    scrollbar-width: none; 
+  }
+  .wrapper::-webkit-scrollbar { display: none; }
 
-.section{
-  min-width:100vw;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  scroll-snap-align:center;
-  position:relative;
-}
+  .section {
+    min-width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: center;
+    position: relative;
+    padding: 20px;
+    transition: background 0.5s ease;
+  }
 
-.card{
-  width:70%;
-  max-width:800px;
-  padding:60px;
-  background:white;
-  border-radius:30px;
-  box-shadow:0 40px 80px rgba(0,0,0,0.2);
-  transform:rotateY(-20deg) scale(0.9);
-  transition:all 1s cubic-bezier(.2,.8,.2,1);
-}
+  /* FONDOS PASTEL SUAVES Y CUQUIS */
+  .section:nth-child(1) { background: #FDFBF7; } /* Crema */
+  .section:nth-child(2) { background: #F4EBE6; } /* Melocotón suave */
+  .section:nth-child(3) { background: #E9EFEA; } /* Menta suave */
+  .section:nth-child(4) { background: #F0EBF4; } /* Lavanda suave */
+  .section:nth-child(5) { background: #FDFBF7; } /* Crema */
 
-.section.active .card{
-  transform:rotateY(0deg) scale(1);
-}
+  /* TARJETA REDONDEADAS Y CON SOMBRA SUAVE */
+  .card {
+    width: 100%;
+    max-width: 700px;
+    padding: 60px 50px;
+    background: #FFFFFF;
+    border-radius: 40px;
+    box-shadow: 0 20px 60px rgba(67, 56, 49, 0.08);
+    text-align: center;
+    /* Efecto de entrada suave */
+    transform: translateY(30px) scale(0.95);
+    opacity: 0.5;
+    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  }
 
-h2{
-  font-size:2.5rem;
-  margin-bottom:20px;
-}
+  /* Cuando la sección está en pantalla, la tarjeta se anima */
+  .section.active .card {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
 
-p{
-  font-size:1.1rem;
-  line-height:1.7;
-  color:#555;
-}
+  /* TEXTOS */
+  .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+  }
+  .hero h1 span {
+    color: var(--accent);
+    font-style: italic;
+  }
 
-/* FONDOS SUAVES */
-.section:nth-child(1){background:linear-gradient(120deg,#1E1C1A,#2C2824);color:white}
-.section:nth-child(2){background:#F6F2EC}
-.section:nth-child(3){background:#EFE7DC}
-.section:nth-child(4){background:#F6F2EC}
-.section:nth-child(5){background:#1E1C1A;color:white}
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+  }
+  /* Subrayado cuqui en los títulos */
+  h2::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 3px;
+    background: var(--accent);
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+  }
 
-/* TEXTO HERO */
-.hero h1{
-  font-size:4rem;
-}
+  p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-light);
+    font-weight: 500;
+  }
 
-.hero span{
-  color:var(--accent);
-}
+  /* BOTÓN */
+  .btn {
+    margin-top: 35px;
+    padding: 15px 35px;
+    border-radius: 50px;
+    border: none;
+    background: var(--accent);
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(226, 133, 110, 0.3);
+  }
+  .btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(226, 133, 110, 0.4);
+  }
 
-/* BOTÓN */
-.btn{
-  margin-top:30px;
-  padding:12px 25px;
-  border-radius:30px;
-  border:none;
-  background:var(--accent);
-  color:white;
-  cursor:pointer;
-  transition:.3s;
-}
+  /* INDICADOR CON EFECTO GLASSMORPHISM */
+  .indicator {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    background: rgba(255,255,255,0.7);
+    padding: 12px 24px;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    backdrop-filter: blur(10px);
+  }
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #E0DCD8;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .dot.active {
+    background: var(--accent);
+    transform: scale(1.3);
+  }
+  
+  /* Iconos decorativos encima de los títulos */
+  .decor {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+  }
 
-.btn:hover{
-  transform:scale(1.05);
-}
-
-/* EFECTO FLOAT */
-.card:hover{
-  transform:rotateY(0deg) scale(1.03) translateY(-10px);
-}
-
-/* INDICADOR */
-.indicator{
-  position:fixed;
-  bottom:20px;
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  gap:10px;
-}
-
-.dot{
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  background:#bbb;
-}
-
-.dot.active{background:var(--accent)}
-
+  /* Responsive para móviles */
+  @media (max-width: 600px) {
+    .card { padding: 40px 30px; }
+    .hero h1 { font-size: 2.8rem; }
+    h2 { font-size: 2rem; }
+    p { font-size: 1.1rem; }
+  }
 </style>
 </head>
 
@@ -136,74 +184,116 @@ p{
 
 <div class="wrapper" id="wrapper">
 
-<!-- 1 -->
-<section class="section hero">
-  <div class="card">
-    <h1>Hola, soy <span>Antonio</span></h1>
-    <p>Esta es mi historia real. Gracias por leerla.</p>
-  </div>
-</section>
+  <section class="section active hero">
+    <div class="card">
+      <div class="decor">✨</div>
+      <h1>Hola, soy <span>Antonio</span></h1>
+      <p>Esta es mi historia real. Gracias por detenerte un momento a leerla.</p>
+    </div>
+  </section>
 
-<!-- 2 -->
-<section class="section">
-  <div class="card">
-    <h2>Mi historia</h2>
-    <p>Todo cambió tras la muerte de mi madre. Perdí estabilidad familiar y terminé fuera de casa.</p>
-  </div>
-</section>
+  <section class="section">
+    <div class="card">
+      <div class="decor">🍂</div>
+      <h2>Mi historia</h2>
+      <p>Todo cambió tras la pérdida de mi madre. Mi mundo se desmoronó, perdí la estabilidad familiar y terminé teniendo que dejar mi hogar.</p>
+    </div>
+  </section>
 
-<!-- 3 -->
-<section class="section">
-  <div class="card">
-    <h2>Situación actual</h2>
-    <p>No tengo un lugar fijo donde dormir. Estoy intentando salir adelante.</p>
-  </div>
-</section>
+  <section class="section">
+    <div class="card">
+      <div class="decor">🌧️</div>
+      <h2>Situación actual</h2>
+      <p>A día de hoy, no tengo un lugar seguro donde dormir. A pesar de las dificultades, sigo luchando cada día para salir adelante.</p>
+    </div>
+  </section>
 
-<!-- 4 -->
-<section class="section">
-  <div class="card">
-    <h2>Cómo ayudar</h2>
-    <p>Cualquier ayuda puede marcar una diferencia enorme en este momento.</p>
-  </div>
-</section>
+  <section class="section">
+    <div class="card">
+      <div class="decor">🤍</div>
+      <h2>Cómo ayudar</h2>
+      <p>Un pequeño gesto tuyo puede ser un mundo para mí. Cualquier tipo de ayuda puede marcar una diferencia enorme en esta etapa de mi vida.</p>
+    </div>
+  </section>
 
-<!-- 5 -->
-<section class="section">
-  <div class="card">
-    <h2>Donación</h2>
-    <p>IBAN: ES00 0000 0000 0000</p>
-    <button class="btn">Copiar</button>
-  </div>
-</section>
+  <section class="section">
+    <div class="card">
+      <div class="decor">☕</div>
+      <h2>¿Me invitas a un café?</h2>
+      <p style="margin-bottom: 10px; font-size: 1rem;">Mi cuenta (IBAN):</p>
+      <p style="font-weight: 600; color: var(--text-dark); letter-spacing: 1px;" id="ibanText">ES00 0000 0000 0000</p>
+      <button class="btn" onclick="copyIban()">Copiar IBAN</button>
+    </div>
+  </section>
 
 </div>
 
 <div class="indicator" id="indicator"></div>
 
 <script>
-const sections = document.querySelectorAll('.section');
-const wrapper = document.getElementById('wrapper');
-const indicator = document.getElementById('indicator');
+  const sections = document.querySelectorAll('.section');
+  const wrapper = document.getElementById('wrapper');
+  const indicator = document.getElementById('indicator');
 
-sections.forEach((_,i)=>{
-  const dot=document.createElement('div');
-  dot.classList.add('dot');
-  if(i===0) dot.classList.add('active');
-  indicator.appendChild(dot);
-});
+  // Crear los puntitos y hacerlos clicables
+  sections.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.classList.add('dot');
+    if (i === 0) dot.classList.add('active');
+    
+    // Navegar al hacer click en el puntito
+    dot.addEventListener('click', () => {
+      wrapper.scrollTo({
+        left: window.innerWidth * i,
+        behavior: 'smooth'
+      });
+    });
+    
+    indicator.appendChild(dot);
+  });
 
-const dots=document.querySelectorAll('.dot');
+  const dots = document.querySelectorAll('.dot');
 
-wrapper.addEventListener('scroll',()=>{
-  let index=Math.round(wrapper.scrollLeft / window.innerWidth);
+  // Detectar la sección activa al hacer scroll
+  wrapper.addEventListener('scroll', () => {
+    let index = Math.round(wrapper.scrollLeft / window.innerWidth);
+    
+    // Evitar errores de índice en los bordes
+    if(index < 0) index = 0;
+    if(index >= sections.length) index = sections.length - 1;
 
-  sections.forEach(s=>s.classList.remove('active'));
-  sections[index].classList.add('active');
+    // Actualizar clases activas
+    sections.forEach(s => s.classList.remove('active'));
+    sections[index].classList.add('active');
 
-  dots.forEach(d=>d.classList.remove('active'));
-  dots[index].classList.add('active');
-});
+    dots.forEach(d => d.classList.remove('active'));
+    dots[index].classList.add('active');
+  });
+
+  // MAGIA PRO: Hacer que la rueda del ratón mueva el scroll horizontalmente
+  wrapper.addEventListener('wheel', (evt) => {
+    evt.preventDefault();
+    wrapper.scrollBy({
+      left: evt.deltaY > 0 ? window.innerWidth : -window.innerWidth,
+      behavior: 'smooth'
+    });
+  }, { passive: false });
+
+  // Función funcional para copiar el IBAN
+  function copyIban() {
+    const iban = document.getElementById('ibanText').innerText;
+    navigator.clipboard.writeText(iban).then(() => {
+      const btn = document.querySelector('.btn');
+      btn.innerText = '¡Copiado! 💖';
+      btn.style.background = '#8A7E77'; // Color gris suave al copiar
+      
+      // Volver a la normalidad después de 2 segundos
+      setTimeout(() => {
+        btn.innerText = 'Copiar IBAN';
+        btn.style.background = 'var(--accent)';
+      }, 2000);
+    });
+  }
 </script>
 
 </body>
