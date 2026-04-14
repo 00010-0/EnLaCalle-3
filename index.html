@@ -13,7 +13,7 @@
   --ink: #1C1A17;
   --accent: #C4773B;
   --muted: #6B6259;
-  --card-bg: #FFFFFF;
+  --soft-accent: rgba(196, 119, 59, 0.1);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -22,10 +22,9 @@ body {
   font-family: 'Quicksand', sans-serif;
   background: var(--ink);
   color: var(--ink);
-  overflow: hidden; /* Bloqueamos scroll vertical para forzar el horizontal */
+  overflow: hidden;
 }
 
-/* CONTENEDOR HORIZONTAL */
 .wrapper {
   display: flex;
   height: 100vh;
@@ -43,11 +42,9 @@ body {
   justify-content: center;
   align-items: center;
   scroll-snap-align: center;
-  position: relative;
   padding: 20px;
 }
 
-/* ESTILO DE LAS TARJETAS */
 .card {
   width: 100%;
   max-width: 850px;
@@ -67,159 +64,89 @@ body {
   opacity: 1;
 }
 
-/* HEADER / PORTADA (SECCIÓN 1) */
-.hero-card {
-  background: var(--ink);
-  color: var(--cream);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.header-label { 
-  font-size: 0.7rem; 
-  letter-spacing: 0.3em; 
-  text-transform: uppercase; 
-  color: var(--accent); 
-  margin-bottom: 1.5rem;
-}
-
-h1 { 
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.5rem, 7vw, 4.5rem); 
-  line-height: 1.1; 
-  margin-bottom: 2rem;
-}
-
+/* TEXTOS GENERALES */
+.label { display: block; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+h1, h2 { font-family: 'Playfair Display', serif; line-height: 1.1; margin-bottom: 1.5rem; }
 h1 em { font-style: italic; color: var(--accent); }
-
-.typed-line { 
-  font-size: 1.2rem; 
-  color: rgba(247,243,236,0.7); 
-  min-height: 1.5em;
-}
-
-.cursor { 
-  display: inline-block; 
-  width: 2px; 
-  height: 1em; 
-  background: var(--accent); 
-  margin-left: 5px;
-  animation: blink 0.8s step-end infinite; 
-}
-
-/* CONTENIDO DE HISTORIA */
-.label { 
-  display: block; 
-  font-size: 0.7rem; 
-  letter-spacing: 0.3em; 
-  text-transform: uppercase; 
-  color: var(--accent); 
-  margin-bottom: 1rem;
-}
-
-h2 { 
-  font-family: 'Playfair Display', serif;
-  font-size: 2.2rem; 
-  margin-bottom: 1.5rem; 
-  line-height: 1.2;
-}
-
 p { font-size: 1.1rem; line-height: 1.7; color: var(--muted); margin-bottom: 1.2rem; }
-strong { color: var(--ink); }
 
-blockquote {
-  border-left: 4px solid var(--accent);
-  padding: 10px 0 10px 20px;
-  margin: 20px 0;
-  font-style: italic;
-  font-size: 1.3rem;
-  color: var(--ink);
-}
-
-/* CUADRÍCULA DE NECESIDADES */
+/* GRID DE NECESIDADES (Ajustado según tu imagen) */
 .needs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas arriba */
   gap: 15px;
   margin-top: 20px;
 }
 
 .need-item {
-  background: rgba(196, 119, 59, 0.1);
-  padding: 20px;
+  background: var(--soft-accent);
+  padding: 25px;
   border-radius: 20px;
 }
 
-.need-item h3 { font-size: 1rem; margin-bottom: 5px; color: var(--accent); }
-.need-item p { font-size: 0.9rem; margin-bottom: 0; }
-
-/* SECCIÓN DONACIÓN */
-.iban-box {
-  background: var(--ink);
-  color: var(--cream);
-  padding: 30px;
-  border-radius: 25px;
-  margin-top: 20px;
-  text-align: center;
+.need-item.full-width {
+  grid-column: span 3; /* El futuro ocupa las 3 columnas */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgba(196, 119, 59, 0.2);
 }
 
-.iban-val {
-  font-family: monospace;
-  font-size: 1.2rem;
-  display: block;
-  margin: 15px 0;
-  color: var(--accent);
-  word-break: break-all;
-}
+.need-item h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--accent); }
+.need-item p { font-size: 0.95rem; margin-bottom: 0; }
 
+/* BOTONES */
 .btn {
   background: var(--accent);
   color: white;
   border: none;
-  padding: 12px 25px;
+  padding: 15px 30px;
   border-radius: 50px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
   cursor: pointer;
   transition: 0.3s;
+  margin: 10px 5px;
+}
+.btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(196, 119, 59, 0.2); }
+
+/* SECCIÓN CONTACTO */
+.contact-box {
+  background: white;
+  padding: 30px;
+  border-radius: 30px;
+  margin-top: 20px;
+  text-align: center;
+  border: 1px dashed var(--accent);
 }
 
-.btn:hover { transform: scale(1.05); }
+.phone-link {
+  font-size: 1.8rem;
+  color: var(--ink);
+  font-weight: 700;
+  display: block;
+  margin: 15px 0;
+  text-decoration: none;
+}
+
+/* PORTADA */
+.hero-card { background: var(--ink); color: var(--cream); text-align: center; }
+.typed-line { font-size: 1.2rem; color: rgba(247,243,236,0.7); min-height: 1.5em; }
+.cursor { display: inline-block; width: 2px; height: 1em; background: var(--accent); animation: blink 0.8s step-end infinite; }
 
 /* INDICADORES */
-.nav-dots {
-  position: fixed;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 12px;
-  background: rgba(255,255,255,0.1);
-  padding: 10px 20px;
-  border-radius: 30px;
-  backdrop-filter: blur(10px);
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(247,243,236,0.3);
-  cursor: pointer;
-}
-
+.nav-dots { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; background: rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 30px; backdrop-filter: blur(10px); }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(247,243,236,0.3); cursor: pointer; }
 .dot.active { background: var(--accent); transform: scale(1.3); }
 
 @keyframes blink { 50% { opacity:0; } }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .card { padding: 30px 20px; border-radius: 0; height: 100vh; max-height: 100vh; }
-  h1 { font-size: 2.2rem; }
-  h2 { font-size: 1.8rem; }
+@media (max-width: 768px) {
+  .needs-grid { grid-template-columns: 1fr; }
+  .need-item.full-width { grid-column: span 1; flex-direction: column; text-align: center; }
+  .card { padding: 30px; }
 }
 </style>
 </head>
@@ -229,30 +156,18 @@ blockquote {
   
   <section class="section active">
     <div class="card hero-card">
-      <p class="header-label">Historia real · Zaragoza, 2025</p>
-      <h1>Soy <em>Antonio</em>.<br>Estoy en la calle.</h1>
+      <p class="header-label">Historia real · Zaragoza, 2026</p>
+      <h1>Soy <em>Antonio</em>.<br>Busco una oportunidad.</h1>
       <p class="typed-line"><span id="typed"></span><span class="cursor"></span></p>
-      <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.5;">Desliza para conocer mi verdad →</p>
     </div>
   </section>
 
   <section class="section">
     <div class="card">
-      <span class="label">El origen</span>
-      <h2>Todo cambió cuando perdí a mi madre.</h2>
-      <p>Me llamo <strong>Antonio Sánchez</strong>. Cuando ella se fue, la relación con mi padre se rompió. Sin su mediación, la convivencia se volvió un muro imposible de saltar.</p>
-      <blockquote>"Buscó una excusa para denunciarme. Aunque la justicia me dio la razón, hoy no puedo entrar en mi propio hogar."</blockquote>
-      <p>Tengo derecho a mi herencia, pero mientras los papeles se mueven, el frío de la calle no espera.</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="card">
-      <span class="label">Día a día</span>
-      <h2>Sin techo esta noche.</h2>
-      <p>Cobro un subsidio mínimo, pero las deudas acumuladas para sobrevivir se lo llevan casi todo. <strong>No busco lujos, busco dignidad.</strong></p>
-      <p>Dormir en un banco o en un albergue no te permite descansar lo suficiente como para reconstruir una vida.</p>
-      <p>Si has llegado hasta aquí, gracias por no girar la cara.</p>
+      <span class="label">Mi pasado</span>
+      <h2>Perderlo todo tras una pérdida.</h2>
+      <p>Tras fallecer mi madre, mi hogar dejó de serlo. Problemas familiares y una situación injusta me han dejado donde estoy hoy: <strong>en la calle</strong>, pero con ganas de salir de ella.</p>
+      <p>Tengo formación y ganas de trabajar, solo necesito el impulso inicial para volver a empezar.</p>
     </div>
   </section>
 
@@ -261,25 +176,56 @@ blockquote {
       <span class="label">¿En qué ayuda tu gesto?</span>
       <h2>Necesidades urgentes.</h2>
       <div class="needs-grid">
-        <div class="need-item"><h3>Alojamiento</h3><p>Noches de hostal para descansar con seguridad.</p></div>
-        <div class="need-item"><h3>Comida</h3><p>Alimentación básica diaria.</p></div>
-        <div class="need-item"><h3>Justicia</h3><p>Gastos para reclamar legalmente mi casa.</p></div>
-        <div class="need-item"><h3>Futuro</h3><p>Un colchón para buscar empleo con estabilidad.</p></div>
+        <div class="need-item">
+          <h3>Alojamiento</h3>
+          <p>Noches de hostal para descansar con seguridad.</p>
+        </div>
+        <div class="need-item">
+          <h3>Comida</h3>
+          <p>Alimentación básica diaria.</p>
+        </div>
+        <div class="need-item">
+          <h3>Justicia</h3>
+          <p>Gastos para recuperar mi hogar legalmente.</p>
+        </div>
+        <div class="need-item full-width">
+          <div>
+            <h3>Futuro</h3>
+            <p>Un colchón para buscar empleo con estabilidad y dignidad.</p>
+          </div>
+          <span style="font-size: 2rem; filter: grayscale(1);">🚀</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="card">
+      <span class="label">Oportunidad laboral</span>
+      <h2>¿Puedes ofrecerme un trabajo?</h2>
+      <p>Más allá de lo económico, lo que más deseo es <strong>volver a sentirme útil</strong>. Si conoces alguna vacante o puedes darme una oportunidad laboral en Zaragoza o alrededores, por favor, contáctame.</p>
+      
+      <div class="contact-box">
+        <span class="label" style="margin-bottom:0">Teléfono y WhatsApp</span>
+        <a href="tel:+34691342480" class="phone-link">+34 691 342 480</a>
+        <div style="display: flex; justify-content: center; flex-wrap: wrap;">
+          <a href="tel:+34691342480" class="btn">Llamar ahora</a>
+          <a href="https://wa.me/34691342480" class="btn" style="background: #25D366;">Enviar WhatsApp</a>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="section">
     <div class="card" style="text-align: center;">
-      <span class="label">Ayuda directa</span>
-      <h2>Un cambio real.</h2>
-      <p>Tu apoyo llega directamente a mí, sin intermediarios.</p>
-      <div class="iban-box">
-        <span style="font-size: 0.7rem; letter-spacing: 2px; opacity: 0.7;">TITULAR: ANTONIO SÁNCHEZ</span>
-        <span class="iban-val" id="iban-val">ES00 0000 0000 0000 0000 0000</span>
+      <span class="label">Donación directa</span>
+      <h2>Cada granito de arena cuenta.</h2>
+      <p>Tu apoyo llega directamente a mis manos para cubrir lo más básico hoy mismo.</p>
+      <div style="background: var(--ink); color: var(--cream); padding: 30px; border-radius: 25px; margin-top: 20px;">
+        <span style="font-size: 0.7rem; letter-spacing: 2px; opacity: 0.7;">IBAN PARA TRANSFERENCIA</span>
+        <span style="font-family: monospace; font-size: 1.2rem; display: block; margin: 15px 0; color: var(--accent); word-break: break-all;" id="iban-val">ES00 0000 0000 0000 0000 0000</span>
         <button class="btn" onclick="copyIBAN()" id="copyBtn">📋 Copiar IBAN</button>
       </div>
-      <p style="margin-top: 20px; font-size: 0.9rem;">Si no puedes aportar, <strong>compartir</strong> esta página es igual de valioso. Gracias de corazón.</p>
     </div>
   </section>
 
@@ -288,14 +234,8 @@ blockquote {
 <div class="nav-dots" id="nav-dots"></div>
 
 <script>
-// MÁQUINA DE ESCRIBIR (Tu lógica original)
-const phrases = [
-  'Mi padre me echó de casa.',
-  'Gané el juicio, pero sigo en la calle.',
-  'No tengo donde dormir esta noche.',
-  'Solo pido una oportunidad.',
-  'Gracias por leer mi historia.'
-];
+// MÁQUINA DE ESCRIBIR
+const phrases = ['No tengo donde dormir esta noche.', 'Solo pido una oportunidad laboral.', 'Gané el juicio, pero sigo en la calle.', 'Gracias por no pasar de largo.'];
 let pi = 0, ci = 0, del = false;
 const tel = document.getElementById('typed');
 function tick() {
@@ -312,7 +252,7 @@ function tick() {
 }
 setTimeout(tick, 1000);
 
-// NAVEGACIÓN Y PUNTOS
+// NAVEGACIÓN
 const wrapper = document.getElementById('wrapper');
 const sections = document.querySelectorAll('.section');
 const dotsContainer = document.getElementById('nav-dots');
@@ -334,7 +274,7 @@ wrapper.addEventListener('scroll', () => {
   });
 });
 
-// SCROLL DE RATÓN A HORIZONTAL
+// SCROLL RATÓN
 wrapper.addEventListener('wheel', (e) => {
   if (e.deltaY !== 0) {
     e.preventDefault();
