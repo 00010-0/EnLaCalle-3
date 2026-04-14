@@ -3,297 +3,354 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Historia de Antonio</title>
+<title>La historia de Antonio Sánchez</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
-  :root {
-    --text-dark: #433831;
-    --text-light: #8A7E77;
-    --accent: #E2856E; /* Un tono salmón/terracota suave */
-  }
+:root {
+  --cream: #F7F3EC;
+  --ink: #1C1A17;
+  --accent: #C4773B;
+  --muted: #6B6259;
+  --card-bg: #FFFFFF;
+}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-  body {
-    font-family: 'Quicksand', sans-serif;
-    color: var(--text-dark);
-    overflow: hidden;
-    background-color: #FDFBF7;
-  }
+body {
+  font-family: 'Quicksand', sans-serif;
+  background: var(--ink);
+  color: var(--ink);
+  overflow: hidden; /* Bloqueamos scroll vertical para forzar el horizontal */
+}
 
-  h1, h2 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    color: var(--text-dark);
-  }
+/* CONTENEDOR HORIZONTAL */
+.wrapper {
+  display: flex;
+  height: 100vh;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.wrapper::-webkit-scrollbar { display: none; }
 
-  /* CONTENEDOR HORIZONTAL */
-  .wrapper {
-    display: flex;
-    height: 100vh;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    /* Ocultar barra de scroll para un look más limpio */
-    scrollbar-width: none; 
-  }
-  .wrapper::-webkit-scrollbar { display: none; }
+.section {
+  min-width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: center;
+  position: relative;
+  padding: 20px;
+}
 
-  .section {
-    min-width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    scroll-snap-align: center;
-    position: relative;
-    padding: 20px;
-    transition: background 0.5s ease;
-  }
+/* ESTILO DE LAS TARJETAS */
+.card {
+  width: 100%;
+  max-width: 850px;
+  max-height: 90vh;
+  background: var(--cream);
+  padding: 50px;
+  border-radius: 40px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+  overflow-y: auto;
+  transform: scale(0.95);
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
 
-  /* FONDOS PASTEL SUAVES Y CUQUIS */
-  .section:nth-child(1) { background: #FDFBF7; } /* Crema */
-  .section:nth-child(2) { background: #F4EBE6; } /* Melocotón suave */
-  .section:nth-child(3) { background: #E9EFEA; } /* Menta suave */
-  .section:nth-child(4) { background: #F0EBF4; } /* Lavanda suave */
-  .section:nth-child(5) { background: #FDFBF7; } /* Crema */
+.section.active .card {
+  transform: scale(1);
+  opacity: 1;
+}
 
-  /* TARJETA REDONDEADAS Y CON SOMBRA SUAVE */
-  .card {
-    width: 100%;
-    max-width: 700px;
-    padding: 60px 50px;
-    background: #FFFFFF;
-    border-radius: 40px;
-    box-shadow: 0 20px 60px rgba(67, 56, 49, 0.08);
-    text-align: center;
-    /* Efecto de entrada suave */
-    transform: translateY(30px) scale(0.95);
-    opacity: 0.5;
-    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-  }
+/* HEADER / PORTADA (SECCIÓN 1) */
+.hero-card {
+  background: var(--ink);
+  color: var(--cream);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  /* Cuando la sección está en pantalla, la tarjeta se anima */
-  .section.active .card {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
+.header-label { 
+  font-size: 0.7rem; 
+  letter-spacing: 0.3em; 
+  text-transform: uppercase; 
+  color: var(--accent); 
+  margin-bottom: 1.5rem;
+}
 
-  /* TEXTOS */
-  .hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 15px;
-  }
-  .hero h1 span {
-    color: var(--accent);
-    font-style: italic;
-  }
+h1 { 
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 7vw, 4.5rem); 
+  line-height: 1.1; 
+  margin-bottom: 2rem;
+}
 
-  h2 {
-    font-size: 2.5rem;
-    margin-bottom: 25px;
-    position: relative;
-    display: inline-block;
-  }
-  /* Subrayado cuqui en los títulos */
-  h2::after {
-    content: '';
-    position: absolute;
-    width: 40px;
-    height: 3px;
-    background: var(--accent);
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 5px;
-  }
+h1 em { font-style: italic; color: var(--accent); }
 
-  p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: var(--text-light);
-    font-weight: 500;
-  }
+.typed-line { 
+  font-size: 1.2rem; 
+  color: rgba(247,243,236,0.7); 
+  min-height: 1.5em;
+}
 
-  /* BOTÓN */
-  .btn {
-    margin-top: 35px;
-    padding: 15px 35px;
-    border-radius: 50px;
-    border: none;
-    background: var(--accent);
-    color: white;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 600;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 20px rgba(226, 133, 110, 0.3);
-  }
-  .btn:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 25px rgba(226, 133, 110, 0.4);
-  }
+.cursor { 
+  display: inline-block; 
+  width: 2px; 
+  height: 1em; 
+  background: var(--accent); 
+  margin-left: 5px;
+  animation: blink 0.8s step-end infinite; 
+}
 
-  /* INDICADOR CON EFECTO GLASSMORPHISM */
-  .indicator {
-    position: fixed;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 15px;
-    background: rgba(255,255,255,0.7);
-    padding: 12px 24px;
-    border-radius: 30px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    backdrop-filter: blur(10px);
-  }
-  .dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #E0DCD8;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  .dot.active {
-    background: var(--accent);
-    transform: scale(1.3);
-  }
-  
-  /* Iconos decorativos encima de los títulos */
-  .decor {
-    font-size: 2.2rem;
-    margin-bottom: 15px;
-  }
+/* CONTENIDO DE HISTORIA */
+.label { 
+  display: block; 
+  font-size: 0.7rem; 
+  letter-spacing: 0.3em; 
+  text-transform: uppercase; 
+  color: var(--accent); 
+  margin-bottom: 1rem;
+}
 
-  /* Responsive para móviles */
-  @media (max-width: 600px) {
-    .card { padding: 40px 30px; }
-    .hero h1 { font-size: 2.8rem; }
-    h2 { font-size: 2rem; }
-    p { font-size: 1.1rem; }
-  }
+h2 { 
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem; 
+  margin-bottom: 1.5rem; 
+  line-height: 1.2;
+}
+
+p { font-size: 1.1rem; line-height: 1.7; color: var(--muted); margin-bottom: 1.2rem; }
+strong { color: var(--ink); }
+
+blockquote {
+  border-left: 4px solid var(--accent);
+  padding: 10px 0 10px 20px;
+  margin: 20px 0;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--ink);
+}
+
+/* CUADRÍCULA DE NECESIDADES */
+.needs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.need-item {
+  background: rgba(196, 119, 59, 0.1);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.need-item h3 { font-size: 1rem; margin-bottom: 5px; color: var(--accent); }
+.need-item p { font-size: 0.9rem; margin-bottom: 0; }
+
+/* SECCIÓN DONACIÓN */
+.iban-box {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 30px;
+  border-radius: 25px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.iban-val {
+  font-family: monospace;
+  font-size: 1.2rem;
+  display: block;
+  margin: 15px 0;
+  color: var(--accent);
+  word-break: break-all;
+}
+
+.btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 50px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover { transform: scale(1.05); }
+
+/* INDICADORES */
+.nav-dots {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  background: rgba(255,255,255,0.1);
+  padding: 10px 20px;
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(247,243,236,0.3);
+  cursor: pointer;
+}
+
+.dot.active { background: var(--accent); transform: scale(1.3); }
+
+@keyframes blink { 50% { opacity:0; } }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .card { padding: 30px 20px; border-radius: 0; height: 100vh; max-height: 100vh; }
+  h1 { font-size: 2.2rem; }
+  h2 { font-size: 1.8rem; }
+}
 </style>
 </head>
-
 <body>
 
 <div class="wrapper" id="wrapper">
-
-  <section class="section active hero">
-    <div class="card">
-      <div class="decor">✨</div>
-      <h1>Hola, soy <span>Antonio</span></h1>
-      <p>Esta es mi historia real. Gracias por detenerte un momento a leerla.</p>
+  
+  <section class="section active">
+    <div class="card hero-card">
+      <p class="header-label">Historia real · Zaragoza, 2025</p>
+      <h1>Soy <em>Antonio</em>.<br>Estoy en la calle.</h1>
+      <p class="typed-line"><span id="typed"></span><span class="cursor"></span></p>
+      <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.5;">Desliza para conocer mi verdad →</p>
     </div>
   </section>
 
   <section class="section">
     <div class="card">
-      <div class="decor">🍂</div>
-      <h2>Mi historia</h2>
-      <p>Todo cambió tras la pérdida de mi madre. Mi mundo se desmoronó, perdí la estabilidad familiar y terminé teniendo que dejar mi hogar.</p>
+      <span class="label">El origen</span>
+      <h2>Todo cambió cuando perdí a mi madre.</h2>
+      <p>Me llamo <strong>Antonio Sánchez</strong>. Cuando ella se fue, la relación con mi padre se rompió. Sin su mediación, la convivencia se volvió un muro imposible de saltar.</p>
+      <blockquote>"Buscó una excusa para denunciarme. Aunque la justicia me dio la razón, hoy no puedo entrar en mi propio hogar."</blockquote>
+      <p>Tengo derecho a mi herencia, pero mientras los papeles se mueven, el frío de la calle no espera.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="card">
-      <div class="decor">🌧️</div>
-      <h2>Situación actual</h2>
-      <p>A día de hoy, no tengo un lugar seguro donde dormir. A pesar de las dificultades, sigo luchando cada día para salir adelante.</p>
+      <span class="label">Día a día</span>
+      <h2>Sin techo esta noche.</h2>
+      <p>Cobro un subsidio mínimo, pero las deudas acumuladas para sobrevivir se lo llevan casi todo. <strong>No busco lujos, busco dignidad.</strong></p>
+      <p>Dormir en un banco o en un albergue no te permite descansar lo suficiente como para reconstruir una vida.</p>
+      <p>Si has llegado hasta aquí, gracias por no girar la cara.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="card">
-      <div class="decor">🤍</div>
-      <h2>Cómo ayudar</h2>
-      <p>Un pequeño gesto tuyo puede ser un mundo para mí. Cualquier tipo de ayuda puede marcar una diferencia enorme en esta etapa de mi vida.</p>
+      <span class="label">¿En qué ayuda tu gesto?</span>
+      <h2>Necesidades urgentes.</h2>
+      <div class="needs-grid">
+        <div class="need-item"><h3>Alojamiento</h3><p>Noches de hostal para descansar con seguridad.</p></div>
+        <div class="need-item"><h3>Comida</h3><p>Alimentación básica diaria.</p></div>
+        <div class="need-item"><h3>Justicia</h3><p>Gastos para reclamar legalmente mi casa.</p></div>
+        <div class="need-item"><h3>Futuro</h3><p>Un colchón para buscar empleo con estabilidad.</p></div>
+      </div>
     </div>
   </section>
 
   <section class="section">
-    <div class="card">
-      <div class="decor">☕</div>
-      <h2>¿Me invitas a un café?</h2>
-      <p style="margin-bottom: 10px; font-size: 1rem;">Mi cuenta (IBAN):</p>
-      <p style="font-weight: 600; color: var(--text-dark); letter-spacing: 1px;" id="ibanText">ES00 0000 0000 0000</p>
-      <button class="btn" onclick="copyIban()">Copiar IBAN</button>
+    <div class="card" style="text-align: center;">
+      <span class="label">Ayuda directa</span>
+      <h2>Un cambio real.</h2>
+      <p>Tu apoyo llega directamente a mí, sin intermediarios.</p>
+      <div class="iban-box">
+        <span style="font-size: 0.7rem; letter-spacing: 2px; opacity: 0.7;">TITULAR: ANTONIO SÁNCHEZ</span>
+        <span class="iban-val" id="iban-val">ES00 0000 0000 0000 0000 0000</span>
+        <button class="btn" onclick="copyIBAN()" id="copyBtn">📋 Copiar IBAN</button>
+      </div>
+      <p style="margin-top: 20px; font-size: 0.9rem;">Si no puedes aportar, <strong>compartir</strong> esta página es igual de valioso. Gracias de corazón.</p>
     </div>
   </section>
 
 </div>
 
-<div class="indicator" id="indicator"></div>
+<div class="nav-dots" id="nav-dots"></div>
 
 <script>
-  const sections = document.querySelectorAll('.section');
-  const wrapper = document.getElementById('wrapper');
-  const indicator = document.getElementById('indicator');
-
-  // Crear los puntitos y hacerlos clicables
-  sections.forEach((_, i) => {
-    const dot = document.createElement('div');
-    dot.classList.add('dot');
-    if (i === 0) dot.classList.add('active');
-    
-    // Navegar al hacer click en el puntito
-    dot.addEventListener('click', () => {
-      wrapper.scrollTo({
-        left: window.innerWidth * i,
-        behavior: 'smooth'
-      });
-    });
-    
-    indicator.appendChild(dot);
-  });
-
-  const dots = document.querySelectorAll('.dot');
-
-  // Detectar la sección activa al hacer scroll
-  wrapper.addEventListener('scroll', () => {
-    let index = Math.round(wrapper.scrollLeft / window.innerWidth);
-    
-    // Evitar errores de índice en los bordes
-    if(index < 0) index = 0;
-    if(index >= sections.length) index = sections.length - 1;
-
-    // Actualizar clases activas
-    sections.forEach(s => s.classList.remove('active'));
-    sections[index].classList.add('active');
-
-    dots.forEach(d => d.classList.remove('active'));
-    dots[index].classList.add('active');
-  });
-
-  // MAGIA PRO: Hacer que la rueda del ratón mueva el scroll horizontalmente
-  wrapper.addEventListener('wheel', (evt) => {
-    evt.preventDefault();
-    wrapper.scrollBy({
-      left: evt.deltaY > 0 ? window.innerWidth : -window.innerWidth,
-      behavior: 'smooth'
-    });
-  }, { passive: false });
-
-  // Función funcional para copiar el IBAN
-  function copyIban() {
-    const iban = document.getElementById('ibanText').innerText;
-    navigator.clipboard.writeText(iban).then(() => {
-      const btn = document.querySelector('.btn');
-      btn.innerText = '¡Copiado! 💖';
-      btn.style.background = '#8A7E77'; // Color gris suave al copiar
-      
-      // Volver a la normalidad después de 2 segundos
-      setTimeout(() => {
-        btn.innerText = 'Copiar IBAN';
-        btn.style.background = 'var(--accent)';
-      }, 2000);
-    });
+// MÁQUINA DE ESCRIBIR (Tu lógica original)
+const phrases = [
+  'Mi padre me echó de casa.',
+  'Gané el juicio, pero sigo en la calle.',
+  'No tengo donde dormir esta noche.',
+  'Solo pido una oportunidad.',
+  'Gracias por leer mi historia.'
+];
+let pi = 0, ci = 0, del = false;
+const tel = document.getElementById('typed');
+function tick() {
+  const p = phrases[pi];
+  if (!del) {
+    tel.textContent = p.slice(0, ++ci);
+    if (ci === p.length) { del = true; return setTimeout(tick, 2000); }
+    setTimeout(tick, 50);
+  } else {
+    tel.textContent = p.slice(0, --ci);
+    if (ci === 0) { del = false; pi = (pi + 1) % phrases.length; return setTimeout(tick, 400); }
+    setTimeout(tick, 30);
   }
+}
+setTimeout(tick, 1000);
+
+// NAVEGACIÓN Y PUNTOS
+const wrapper = document.getElementById('wrapper');
+const sections = document.querySelectorAll('.section');
+const dotsContainer = document.getElementById('nav-dots');
+
+sections.forEach((_, i) => {
+  const dot = document.createElement('div');
+  dot.classList.add('dot');
+  if (i === 0) dot.classList.add('active');
+  dot.onclick = () => wrapper.scrollTo({ left: window.innerWidth * i, behavior: 'smooth' });
+  dotsContainer.appendChild(dot);
+});
+
+const dots = document.querySelectorAll('.dot');
+wrapper.addEventListener('scroll', () => {
+  let index = Math.round(wrapper.scrollLeft / window.innerWidth);
+  sections.forEach((s, i) => {
+    s.classList.toggle('active', i === index);
+    dots[i].classList.toggle('active', i === index);
+  });
+});
+
+// SCROLL DE RATÓN A HORIZONTAL
+wrapper.addEventListener('wheel', (e) => {
+  if (e.deltaY !== 0) {
+    e.preventDefault();
+    wrapper.scrollBy({ left: e.deltaY > 0 ? window.innerWidth : -window.innerWidth, behavior: 'smooth' });
+  }
+}, { passive: false });
+
+// COPIAR IBAN
+function copyIBAN() {
+  const iban = document.getElementById('iban-val').textContent;
+  navigator.clipboard.writeText(iban).then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = '✓ Copiado';
+    setTimeout(() => { btn.textContent = '📋 Copiar IBAN'; }, 2000);
+  });
+}
 </script>
 
 </body>
