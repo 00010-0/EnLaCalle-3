@@ -64,36 +64,29 @@ body {
   opacity: 1;
 }
 
-/* TEXTOS GENERALES */
+/* TEXTOS */
 .label { display: block; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
 h1, h2 { font-family: 'Playfair Display', serif; line-height: 1.1; margin-bottom: 1.5rem; }
 h1 em { font-style: italic; color: var(--accent); }
 p { font-size: 1.1rem; line-height: 1.7; color: var(--muted); margin-bottom: 1.2rem; }
+strong { color: var(--ink); }
 
-/* GRID DE NECESIDADES (Ajustado según tu imagen) */
+/* GRID DE NECESIDADES (FUTURO GRANDE) */
 .needs-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columnas arriba */
+  grid-template-columns: repeat(3, 1fr);
   gap: 15px;
   margin-top: 20px;
 }
-
-.need-item {
-  background: var(--soft-accent);
-  padding: 25px;
-  border-radius: 20px;
-}
-
+.need-item { background: var(--soft-accent); padding: 25px; border-radius: 20px; }
 .need-item.full-width {
-  grid-column: span 3; /* El futuro ocupa las 3 columnas */
+  grid-column: span 3;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 1px solid rgba(196, 119, 59, 0.2);
 }
-
 .need-item h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--accent); }
-.need-item p { font-size: 0.95rem; margin-bottom: 0; }
 
 /* BOTONES */
 .btn {
@@ -121,15 +114,7 @@ p { font-size: 1.1rem; line-height: 1.7; color: var(--muted); margin-bottom: 1.2
   text-align: center;
   border: 1px dashed var(--accent);
 }
-
-.phone-link {
-  font-size: 1.8rem;
-  color: var(--ink);
-  font-weight: 700;
-  display: block;
-  margin: 15px 0;
-  text-decoration: none;
-}
+.phone-link { font-size: 1.8rem; color: var(--ink); font-weight: 700; display: block; margin: 15px 0; text-decoration: none; }
 
 /* PORTADA */
 .hero-card { background: var(--ink); color: var(--cream); text-align: center; }
@@ -157,24 +142,33 @@ p { font-size: 1.1rem; line-height: 1.7; color: var(--muted); margin-bottom: 1.2
   <section class="section active">
     <div class="card hero-card">
       <p class="header-label">Historia real · Zaragoza, 2026</p>
-      <h1>Soy <em>Antonio</em>.<br>Busco una oportunidad.</h1>
+      <h1>Soy <em>Antonio</em>.<br>Esta es mi verdad.</h1>
       <p class="typed-line"><span id="typed"></span><span class="cursor"></span></p>
     </div>
   </section>
 
   <section class="section">
     <div class="card">
-      <span class="label">Mi pasado</span>
-      <h2>Perderlo todo tras una pérdida.</h2>
-      <p>Tras fallecer mi madre, mi hogar dejó de serlo. Problemas familiares y una situación injusta me han dejado donde estoy hoy: <strong>en la calle</strong>, pero con ganas de salir de ella.</p>
-      <p>Tengo formación y ganas de trabajar, solo necesito el impulso inicial para volver a empezar.</p>
+      <span class="label">El origen</span>
+      <h2>Todo cambió con su ausencia.</h2>
+      <p>Tras fallecer mi madre, mi mundo se desmoronó. La relación con mi padre se volvió insostenible y, tras un juicio injusto del que fui absuelto, me vi fuera de mi hogar.</p>
+      <p>Tengo una orden de alejamiento que me impide entrar en la casa que también me pertenece por herencia. <strong>Estoy legalmente fuera de mi propia vida.</strong></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="card">
+      <span class="label">Día a día</span>
+      <h2>Sin un techo seguro.</h2>
+      <p>Actualmente no tengo un lugar fijo donde dormir. Cobro un subsidio mínimo que apenas sirve para intentar mantener la dignidad en la calle.</p>
+      <p>Dormir en albergues o en la intemperie hace que cada día sea una batalla por la salud y la esperanza. <strong>Solo pido una mano para volver a levantarme.</strong></p>
     </div>
   </section>
 
   <section class="section">
     <div class="card">
       <span class="label">¿En qué ayuda tu gesto?</span>
-      <h2>Necesidades urgentes.</h2>
+      <h2>Prioridades urgentes.</h2>
       <div class="needs-grid">
         <div class="need-item">
           <h3>Alojamiento</h3>
@@ -191,7 +185,7 @@ p { font-size: 1.1rem; line-height: 1.7; color: var(--muted); margin-bottom: 1.2
         <div class="need-item full-width">
           <div>
             <h3>Futuro</h3>
-            <p>Un colchón para buscar empleo con estabilidad y dignidad.</p>
+            <p>Un colchón económico para buscar empleo con la estabilidad y la imagen que requiere un puesto de trabajo.</p>
           </div>
           <span style="font-size: 2rem; filter: grayscale(1);">🚀</span>
         </div>
@@ -202,15 +196,15 @@ p { font-size: 1.1rem; line-height: 1.7; color: var(--muted); margin-bottom: 1.2
   <section class="section">
     <div class="card">
       <span class="label">Oportunidad laboral</span>
-      <h2>¿Puedes ofrecerme un trabajo?</h2>
-      <p>Más allá de lo económico, lo que más deseo es <strong>volver a sentirme útil</strong>. Si conoces alguna vacante o puedes darme una oportunidad laboral en Zaragoza o alrededores, por favor, contáctame.</p>
+      <h2>¿Buscas a alguien con ganas?</h2>
+      <p>Lo que más necesito es <strong>trabajo</strong>. Si tienes una vacante o sabes de alguien que necesite a una persona responsable en Zaragoza, mi compromiso será total.</p>
       
       <div class="contact-box">
-        <span class="label" style="margin-bottom:0">Teléfono y WhatsApp</span>
+        <span class="label" style="margin-bottom:0">Contacto Directo</span>
         <a href="tel:+34691342480" class="phone-link">+34 691 342 480</a>
         <div style="display: flex; justify-content: center; flex-wrap: wrap;">
-          <a href="tel:+34691342480" class="btn">Llamar ahora</a>
-          <a href="https://wa.me/34691342480" class="btn" style="background: #25D366;">Enviar WhatsApp</a>
+          <a href="tel:+34691342480" class="btn">Llamar</a>
+          <a href="https://wa.me/34691342480" class="btn" style="background: #25D366;">WhatsApp</a>
         </div>
       </div>
     </div>
@@ -218,14 +212,15 @@ p { font-size: 1.1rem; line-height: 1.7; color: var(--muted); margin-bottom: 1.2
 
   <section class="section">
     <div class="card" style="text-align: center;">
-      <span class="label">Donación directa</span>
-      <h2>Cada granito de arena cuenta.</h2>
-      <p>Tu apoyo llega directamente a mis manos para cubrir lo más básico hoy mismo.</p>
+      <span class="label">Apoyo económico</span>
+      <h2>Una transferencia, un respiro.</h2>
+      <p>Si no puedes ofrecerme empleo, tu ayuda económica me permite comer hoy y pagar una habitación donde dormir seguro.</p>
       <div style="background: var(--ink); color: var(--cream); padding: 30px; border-radius: 25px; margin-top: 20px;">
-        <span style="font-size: 0.7rem; letter-spacing: 2px; opacity: 0.7;">IBAN PARA TRANSFERENCIA</span>
+        <span style="font-size: 0.7rem; letter-spacing: 2px; opacity: 0.7;">TITULAR: ANTONIO SÁNCHEZ</span>
         <span style="font-family: monospace; font-size: 1.2rem; display: block; margin: 15px 0; color: var(--accent); word-break: break-all;" id="iban-val">ES00 0000 0000 0000 0000 0000</span>
         <button class="btn" onclick="copyIBAN()" id="copyBtn">📋 Copiar IBAN</button>
       </div>
+      <p style="margin-top: 25px; font-size: 0.9rem; opacity: 0.6;">Gracias por leer mi historia hasta el final.</p>
     </div>
   </section>
 
@@ -235,7 +230,7 @@ p { font-size: 1.1rem; line-height: 1.7; color: var(--muted); margin-bottom: 1.2
 
 <script>
 // MÁQUINA DE ESCRIBIR
-const phrases = ['No tengo donde dormir esta noche.', 'Solo pido una oportunidad laboral.', 'Gané el juicio, pero sigo en la calle.', 'Gracias por no pasar de largo.'];
+const phrases = ['No tengo donde dormir esta noche.', 'Busco una oportunidad para trabajar.', 'Fui absuelto, pero sigo en la calle.', 'Cualquier ayuda marca la diferencia.'];
 let pi = 0, ci = 0, del = false;
 const tel = document.getElementById('typed');
 function tick() {
@@ -252,7 +247,7 @@ function tick() {
 }
 setTimeout(tick, 1000);
 
-// NAVEGACIÓN
+// NAVEGACIÓN POR PUNTOS
 const wrapper = document.getElementById('wrapper');
 const sections = document.querySelectorAll('.section');
 const dotsContainer = document.getElementById('nav-dots');
@@ -274,7 +269,7 @@ wrapper.addEventListener('scroll', () => {
   });
 });
 
-// SCROLL RATÓN
+// SCROLL HORIZONTAL CON RUEDA
 wrapper.addEventListener('wheel', (e) => {
   if (e.deltaY !== 0) {
     e.preventDefault();
