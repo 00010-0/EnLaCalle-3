@@ -14,6 +14,7 @@
   --accent: #C4773B;
   --muted: #6B6259;
   --soft-accent: rgba(196, 119, 59, 0.1);
+  --light-warm: #E8DDD0;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -48,7 +49,7 @@ body {
 .card {
   width: 100%;
   max-width: 850px;
-  max-height: 90vh;
+  max-height: 92vh;
   background: var(--cream);
   padding: 50px;
   border-radius: 40px;
@@ -64,14 +65,33 @@ body {
   opacity: 1;
 }
 
-/* TEXTOS */
+/* ESTILO PROFESIONAL DE LA HISTORIA (RESTAURADO) */
+.story-wrap {
+  border-left: 2px solid var(--light-warm);
+  padding-left: 2.5rem;
+  text-align: left;
+}
+
 .label { display: block; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
 h1, h2 { font-family: 'Playfair Display', serif; line-height: 1.1; margin-bottom: 1.5rem; }
 h1 em { font-style: italic; color: var(--accent); }
 p { font-size: 1.1rem; line-height: 1.7; color: var(--muted); margin-bottom: 1.2rem; }
 strong { color: var(--ink); }
 
-/* GRID DE NECESIDADES (FUTURO GRANDE) */
+blockquote {
+  border-left: 3px solid var(--accent);
+  padding: 0.5rem 0 0.5rem 1.75rem;
+  margin: 2rem 0;
+}
+blockquote p {
+  font-style: italic;
+  font-size: 1.25rem !important;
+  color: var(--ink) !important;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+/* GRID DE NECESIDADES */
 .needs-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -131,7 +151,8 @@ strong { color: var(--ink); }
 @media (max-width: 768px) {
   .needs-grid { grid-template-columns: 1fr; }
   .need-item.full-width { grid-column: span 1; flex-direction: column; text-align: center; }
-  .card { padding: 30px; }
+  .card { padding: 35px 25px; }
+  .story-wrap { padding-left: 1.2rem; }
 }
 </style>
 </head>
@@ -149,10 +170,15 @@ strong { color: var(--ink); }
 
   <section class="section">
     <div class="card">
-      <span class="label">El origen</span>
-      <h2>Todo cambió con su ausencia.</h2>
-      <p>Tras fallecer mi madre, mi mundo se desmoronó. La relación con mi padre se volvió insostenible y, tras un juicio injusto del que fui absuelto, me vi fuera de mi hogar.</p>
-      <p>Tengo una orden de alejamiento que me impide entrar en la casa que también me pertenece por herencia. <strong>Estoy legalmente fuera de mi propia vida.</strong></p>
+      <span class="label">Mi situación</span>
+      <div class="story-wrap">
+        <h2>Todo cambió cuando<br>perdí a mi madre.</h2>
+        <p>Me llamo <strong>Antonio Sánchez</strong>. Cuando murió mi madre, la relación con mi padre se rompió del todo. Sin ella, no hubo tregua posible. La convivencia se volvió insostenible.</p>
+        <blockquote>
+          <p>"Buscó una riña cualquiera para denunciarme por agresión. Era mentira. Fui a juicio, y gané."</p>
+        </blockquote>
+        <p>Fui absuelto porque no le pegué. Pero tengo una orden de alejamiento que me impide entrar en <strong>mi propio hogar</strong>, aunque legalmente me corresponde una parte de ese piso por herencia.</p>
+      </div>
     </div>
   </section>
 
@@ -160,8 +186,9 @@ strong { color: var(--ink); }
     <div class="card">
       <span class="label">Día a día</span>
       <h2>Sin un techo seguro.</h2>
-      <p>Actualmente no tengo un lugar fijo donde dormir. Cobro un subsidio mínimo que apenas sirve para intentar mantener la dignidad en la calle.</p>
-      <p>Dormir en albergues o en la intemperie hace que cada día sea una batalla por la salud y la esperanza. <strong>Solo pido una mano para volver a levantarme.</strong></p>
+      <p>A pesar de haber ganado legalmente, la realidad es que <strong>hoy no tengo donde dormir</strong>. Cobro un subsidio que no cubre las deudas acumuladas para sobrevivir en la calle.</p>
+      <p>No soy perfecto, nadie lo es. Pero no me merezco vivir a la intemperie mientras espero una justicia que tarda demasiado en llegar.</p>
+      <p>Si has llegado hasta aquí, gracias por escucharme.</p>
     </div>
   </section>
 
@@ -185,7 +212,7 @@ strong { color: var(--ink); }
         <div class="need-item full-width">
           <div>
             <h3>Futuro</h3>
-            <p>Un colchón económico para buscar empleo con la estabilidad y la imagen que requiere un puesto de trabajo.</p>
+            <p>Un colchón económico para buscar empleo con la estabilidad y la dignidad que requiere un nuevo comienzo.</p>
           </div>
           <span style="font-size: 2rem; filter: grayscale(1);">🚀</span>
         </div>
@@ -196,8 +223,8 @@ strong { color: var(--ink); }
   <section class="section">
     <div class="card">
       <span class="label">Oportunidad laboral</span>
-      <h2>¿Buscas a alguien con ganas?</h2>
-      <p>Lo que más necesito es <strong>trabajo</strong>. Si tienes una vacante o sabes de alguien que necesite a una persona responsable en Zaragoza, mi compromiso será total.</p>
+      <h2>¿Puedes darme una oportunidad?</h2>
+      <p>Lo que realmente busco es volver a trabajar. Si conoces alguna vacante en Zaragoza o alrededores, mi compromiso es absoluto.</p>
       
       <div class="contact-box">
         <span class="label" style="margin-bottom:0">Contacto Directo</span>
@@ -213,14 +240,14 @@ strong { color: var(--ink); }
   <section class="section">
     <div class="card" style="text-align: center;">
       <span class="label">Apoyo económico</span>
-      <h2>Una transferencia, un respiro.</h2>
-      <p>Si no puedes ofrecerme empleo, tu ayuda económica me permite comer hoy y pagar una habitación donde dormir seguro.</p>
+      <h2>Cada gesto cuenta.</h2>
+      <p>Sin intermediarios. Tu ayuda me permite cubrir lo básico mientras reconstruyo mi camino.</p>
       <div style="background: var(--ink); color: var(--cream); padding: 30px; border-radius: 25px; margin-top: 20px;">
         <span style="font-size: 0.7rem; letter-spacing: 2px; opacity: 0.7;">TITULAR: ANTONIO SÁNCHEZ</span>
         <span style="font-family: monospace; font-size: 1.2rem; display: block; margin: 15px 0; color: var(--accent); word-break: break-all;" id="iban-val">ES00 0000 0000 0000 0000 0000</span>
         <button class="btn" onclick="copyIBAN()" id="copyBtn">📋 Copiar IBAN</button>
       </div>
-      <p style="margin-top: 25px; font-size: 0.9rem; opacity: 0.6;">Gracias por leer mi historia hasta el final.</p>
+      <p style="margin-top: 25px; font-size: 0.9rem; opacity: 0.6;">Si no puedes donar, compartir esta página ayuda muchísimo. Gracias.</p>
     </div>
   </section>
 
@@ -230,7 +257,7 @@ strong { color: var(--ink); }
 
 <script>
 // MÁQUINA DE ESCRIBIR
-const phrases = ['No tengo donde dormir esta noche.', 'Busco una oportunidad para trabajar.', 'Fui absuelto, pero sigo en la calle.', 'Cualquier ayuda marca la diferencia.'];
+const phrases = ['No tengo donde dormir esta noche.', 'Solo pido una oportunidad laboral.', 'Fui absuelto, pero sigo en la calle.', 'Gracias por leer mi historia.'];
 let pi = 0, ci = 0, del = false;
 const tel = document.getElementById('typed');
 function tick() {
@@ -247,7 +274,7 @@ function tick() {
 }
 setTimeout(tick, 1000);
 
-// NAVEGACIÓN POR PUNTOS
+// NAVEGACIÓN
 const wrapper = document.getElementById('wrapper');
 const sections = document.querySelectorAll('.section');
 const dotsContainer = document.getElementById('nav-dots');
@@ -269,14 +296,6 @@ wrapper.addEventListener('scroll', () => {
   });
 });
 
-// SCROLL HORIZONTAL CON RUEDA
-wrapper.addEventListener('wheel', (e) => {
-  if (e.deltaY !== 0) {
-    e.preventDefault();
-    wrapper.scrollBy({ left: e.deltaY > 0 ? window.innerWidth : -window.innerWidth, behavior: 'smooth' });
-  }
-}, { passive: false });
-
 // COPIAR IBAN
 function copyIBAN() {
   const iban = document.getElementById('iban-val').textContent;
@@ -286,6 +305,14 @@ function copyIBAN() {
     setTimeout(() => { btn.textContent = '📋 Copiar IBAN'; }, 2000);
   });
 }
+
+// SCROLL RUEDA
+wrapper.addEventListener('wheel', (e) => {
+  if (e.deltaY !== 0) {
+    e.preventDefault();
+    wrapper.scrollBy({ left: e.deltaY > 0 ? window.innerWidth : -window.innerWidth, behavior: 'smooth' });
+  }
+}, { passive: false });
 </script>
 
 </body>
